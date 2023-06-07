@@ -1,16 +1,18 @@
 package com.example.TeamProject.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.sql.Timestamp;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 @Entity
 public class Prenotazione {
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private Timestamp orario;
     private String ambulatorio;
     private String motivo;
