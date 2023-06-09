@@ -1,8 +1,8 @@
 package com.example.TeamProject.enums;
 
 public enum AccountAttivationStateEnum {
-    ATTIVO("ATTIVO"),
-    NON_ATTIVO("NON_ATTIVO");
+    ACTIVE("ACTIVE"),
+    NO_ACTIVE("NO_ACTIVE");
 
     private String description;
 

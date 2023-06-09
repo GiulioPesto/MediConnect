@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
-@RequestMapping(value = "/api/medicaloffice/")
+@RequestMapping(value = "/api/medicalOffice/")
 public class MedicalOfficeController {
     private MedicalOfficeService medicalOfficeService;
 
