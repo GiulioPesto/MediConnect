@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/api/secretaries/")
+@RequestMapping(value = "/api/secretary/")
 public class SecretaryController {
     private SecretaryService secretaryService;
 
