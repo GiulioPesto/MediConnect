@@ -1,9 +1,10 @@
 package com.example.TeamProject.repository;
 
-import com.example.TeamProject.model.Segretari;
+import com.example.TeamProject.model.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SegretariDao extends JpaRepository<Segretari, Long> {
+public interface BookingDao extends JpaRepository<Booking,Long> {
+
 }

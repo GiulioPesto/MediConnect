@@ -1,9 +1,9 @@
 package com.example.TeamProject.repository;
 
-import com.example.TeamProject.model.Medico;
+import com.example.TeamProject.model.Secretary;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MedicoDao extends JpaRepository<Medico, Long> {
+public interface SecretaryDao extends JpaRepository<Secretary, Long> {
 }

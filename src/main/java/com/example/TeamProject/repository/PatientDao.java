@@ -1,10 +1,9 @@
 package com.example.TeamProject.repository;
 
-import com.example.TeamProject.model.Prenotazione;
+import com.example.TeamProject.model.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PrenotazioneDao extends JpaRepository<Prenotazione,Long> {
-
+public interface PatientDao extends JpaRepository<Patient, Long> {
 }

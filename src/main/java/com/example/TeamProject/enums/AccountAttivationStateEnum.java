@@ -1,12 +1,12 @@
 package com.example.TeamProject.enums;
 
-public enum StatoAttivazioneAccountEnum {
+public enum AccountAttivationStateEnum {
     ATTIVO("ATTIVO"),
     NON_ATTIVO("NON_ATTIVO");
 
     private String description;
 
-    StatoAttivazioneAccountEnum(String description) {
+    AccountAttivationStateEnum(String description) {
         this.description = description;
     }
 }
