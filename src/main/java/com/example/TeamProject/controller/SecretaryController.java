@@ -1,6 +1,6 @@
 package com.example.TeamProject.controller;
 
-import com.example.TeamProject.model.Secretary;
+import com.example.TeamProject.entity.Secretary;
 import com.example.TeamProject.service.SecretaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

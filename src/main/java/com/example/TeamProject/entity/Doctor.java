@@ -1,4 +1,4 @@
-package com.example.TeamProject.model;
+package com.example.TeamProject.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,8 +7,6 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Doctor extends Staff {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
 
     private String specialization;
     private String orderRegistration;

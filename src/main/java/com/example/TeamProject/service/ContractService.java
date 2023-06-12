@@ -1,6 +1,6 @@
 package com.example.TeamProject.service;
 
-import com.example.TeamProject.model.Contract;
+import com.example.TeamProject.entity.Contract;
 import com.example.TeamProject.repository.ContractDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.example.TeamProject.repository;
 
-import com.example.TeamProject.model.Patient;
+import com.example.TeamProject.entity.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

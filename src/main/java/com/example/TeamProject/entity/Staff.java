@@ -1,4 +1,4 @@
-package com.example.TeamProject.model;
+package com.example.TeamProject.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,25 +6,24 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Patient {
+public abstract class Staff {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String taxCode;
     private String firstName;
     private String lastName;
-    private String telephone;
-    private String email;
+    private String personalTelephone;
 
-    public Patient(String taxCode, String firstName, String lastName, String telephone, String email) {
+    public Staff(Long id, String taxCode, String firstName, String lastName, String personalTelephone) {
+        this.id = id;
         this.taxCode = taxCode;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.telephone = telephone;
-        this.email = email;
+        this.personalTelephone = personalTelephone;
     }
 
-    public Patient() {}
+    public Staff() {}
 
     public Long getId() {
         return id;
@@ -58,19 +57,11 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getPersonalTelephone() {
+        return personalTelephone;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPersonalTelephone(String personalTelephone) {
+        this.personalTelephone = personalTelephone;
     }
 }

@@ -1,6 +1,6 @@
 package com.example.TeamProject.service;
 
-import com.example.TeamProject.model.Secretary;
+import com.example.TeamProject.entity.Secretary;
 import com.example.TeamProject.repository.SecretaryDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

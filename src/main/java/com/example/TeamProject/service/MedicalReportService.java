@@ -1,6 +1,6 @@
 package com.example.TeamProject.service;
 
-import com.example.TeamProject.model.MedicalReport;
+import com.example.TeamProject.entity.MedicalReport;
 import com.example.TeamProject.repository.MedicalReportDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

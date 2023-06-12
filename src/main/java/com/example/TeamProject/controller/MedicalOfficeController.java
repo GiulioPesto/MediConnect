@@ -1,6 +1,6 @@
 package com.example.TeamProject.controller;
 
-import com.example.TeamProject.model.MedicalOffice;
+import com.example.TeamProject.entity.MedicalOffice;
 import com.example.TeamProject.service.MedicalOfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

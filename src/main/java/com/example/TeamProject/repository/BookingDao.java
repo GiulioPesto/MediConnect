@@ -1,6 +1,6 @@
 package com.example.TeamProject.repository;
 
-import com.example.TeamProject.model.Booking;
+import com.example.TeamProject.entity.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

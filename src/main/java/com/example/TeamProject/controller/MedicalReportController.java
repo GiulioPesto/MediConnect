@@ -1,6 +1,6 @@
 package com.example.TeamProject.controller;
 
-import com.example.TeamProject.model.MedicalReport;
+import com.example.TeamProject.entity.MedicalReport;
 import com.example.TeamProject.service.MedicalReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ public class MedicalReportController {
         this.medicalReportService = medicalReportService;
     }
 
-    @PostMapping("create")
+    @PostMapping
     public ResponseEntity<?> addMedicalReport(@RequestBody MedicalReport medicalReport){
         medicalReportService.addMedicalReport(medicalReport);
         return ResponseEntity.ok().build();

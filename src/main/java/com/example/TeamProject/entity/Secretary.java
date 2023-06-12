@@ -1,4 +1,4 @@
-package com.example.TeamProject.model;
+package com.example.TeamProject.entity;
 
 import jakarta.persistence.Entity;
 

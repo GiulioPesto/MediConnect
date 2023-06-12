@@ -1,6 +1,6 @@
 package com.example.TeamProject.service;
 
-import com.example.TeamProject.model.Booking;
+import com.example.TeamProject.entity.Booking;
 import com.example.TeamProject.repository.BookingDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
