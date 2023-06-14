@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.management.openmbean.InvalidKeyException;
+import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -18,6 +19,10 @@ public class DoctorService {
 
     public Optional<DoctorEntity> getDoctor(Long doctorId) {
         return doctorRepository.findById(doctorId);
+    }
+
+    public Collection<DoctorEntity> getAllDoctors() {
+        return doctorRepository.findAll();
     }
 
     public void updateDoctor(Long doctorId, DoctorEntity updatedDoctor) {
@@ -34,4 +39,6 @@ public class DoctorService {
     public void deleteDoctor(Long doctorId) {
         doctorRepository.deleteById(doctorId);
     }
+
+    public void deleteAllDoctors() {doctorRepository.deleteAll();}
 }

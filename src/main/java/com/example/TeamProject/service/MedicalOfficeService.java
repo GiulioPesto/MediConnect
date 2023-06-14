@@ -1,10 +1,12 @@
 package com.example.TeamProject.service;
+import com.example.TeamProject.entity.BookingEntity;
 import com.example.TeamProject.entity.MedicalOfficeEntity;
 import com.example.TeamProject.repository.MedicalOfficeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.management.openmbean.InvalidKeyException;
+import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -20,6 +22,10 @@ public class MedicalOfficeService {
         return medicalOfficeRepository.findById(medicalOfficeId);
     }
 
+    public Collection<MedicalOfficeEntity> getAllMedicalOffices() {
+        return medicalOfficeRepository.findAll();
+    }
+
     public void updateMedicalOffice(Long medicalOfficeId, MedicalOfficeEntity updatedMedicalOffice) {
         MedicalOfficeEntity medicalOfficeRepo = medicalOfficeRepository.findById(medicalOfficeId).orElseThrow(InvalidKeyException::new);
         medicalOfficeRepo.setCity(updatedMedicalOffice.getCity());
@@ -33,4 +39,6 @@ public class MedicalOfficeService {
     public void deleteMedicalOffice(Long medicalOfficeId) {
         medicalOfficeRepository.deleteById(medicalOfficeId);
     }
+
+    public void deleteAllMedicalOffices() {medicalOfficeRepository.deleteAll();}
 }

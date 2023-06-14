@@ -1,10 +1,13 @@
 package com.example.TeamProject.controller;
+import com.example.TeamProject.entity.BookingEntity;
 import com.example.TeamProject.entity.DoctorEntity;
 import com.example.TeamProject.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
 
 @RestController
 @RequestMapping(value = "/api/doctor/")
@@ -27,6 +30,11 @@ public class DoctorController {
             }
     }
 
+    @GetMapping("getAll")
+    public ResponseEntity<Collection<DoctorEntity>> viewAllDoctors() {
+        return ResponseEntity.ok(doctorService.getAllDoctors());
+    }
+
     @PutMapping("{id}")
     public ResponseEntity<DoctorEntity> updateDoctor(@PathVariable("id") Long doctorId,
                                                      @RequestBody DoctorEntity doctor) {
@@ -37,6 +45,12 @@ public class DoctorController {
     @DeleteMapping("{id}")
     public ResponseEntity<DoctorEntity> removeDoctor(@PathVariable("id") Long doctorId) {
         doctorService.deleteDoctor(doctorId);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("deleteAll")
+    public ResponseEntity<DoctorEntity> deleteAllDoctors() {
+        doctorService.getAllDoctors();
         return ResponseEntity.ok().build();
     }
 }

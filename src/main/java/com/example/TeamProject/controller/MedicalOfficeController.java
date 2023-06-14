@@ -1,10 +1,13 @@
 package com.example.TeamProject.controller;
+import com.example.TeamProject.entity.BookingEntity;
 import com.example.TeamProject.entity.MedicalOfficeEntity;
 import com.example.TeamProject.service.MedicalOfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -29,6 +32,11 @@ public class MedicalOfficeController {
         }
     }
 
+    @GetMapping("getAll")
+    public ResponseEntity<Collection<MedicalOfficeEntity>> viewAllMedicalOffices() {
+        return ResponseEntity.ok(medicalOfficeService.getAllMedicalOffices());
+    }
+
     @PutMapping("{id}")
     public ResponseEntity<MedicalOfficeEntity> updateMedicalOffice(@PathVariable("id") Long medicalOfficeId,
                                                                    @RequestBody MedicalOfficeEntity updatedMedicalOffice) {
@@ -39,6 +47,12 @@ public class MedicalOfficeController {
     @DeleteMapping("{id}")
     public ResponseEntity<MedicalOfficeEntity> deleteMedicalOffice(@PathVariable("id") Long medicalOfficeId) {
         medicalOfficeService.deleteMedicalOffice(medicalOfficeId);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("deleteAll")
+    public ResponseEntity<MedicalOfficeEntity> deleteAllMedicalOffices() {
+        medicalOfficeService.deleteAllMedicalOffices();
         return ResponseEntity.ok().build();
     }
 }

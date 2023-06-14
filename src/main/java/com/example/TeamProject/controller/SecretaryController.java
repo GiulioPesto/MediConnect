@@ -1,10 +1,13 @@
 package com.example.TeamProject.controller;
+import com.example.TeamProject.entity.BookingEntity;
 import com.example.TeamProject.entity.SecretaryEntity;
 import com.example.TeamProject.service.SecretaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
 
 @RestController
 @RequestMapping(value = "/api/secretary/")
@@ -27,6 +30,11 @@ public class SecretaryController {
         }
     }
 
+    @GetMapping("getAll")
+    public ResponseEntity<Collection<SecretaryEntity>> viewAllSecretaries() {
+        return ResponseEntity.ok(secretaryService.getAllSecretaries());
+    }
+
     @PutMapping("{id}")
     public ResponseEntity<SecretaryEntity> updateSecretary(@PathVariable("id") Long secretaryId,
                                                            @RequestBody SecretaryEntity secretary) {
@@ -37,6 +45,12 @@ public class SecretaryController {
     @DeleteMapping("{id}")
     public ResponseEntity<SecretaryEntity> removeSecretary(@PathVariable("id") Long secretaryId) {
         secretaryService.deleteSecretary(secretaryId);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("deleteAll")
+    public ResponseEntity<SecretaryEntity> deleteAllSecretaries() {
+        secretaryService.deleteAllSecretaries();
         return ResponseEntity.ok().build();
     }
 }

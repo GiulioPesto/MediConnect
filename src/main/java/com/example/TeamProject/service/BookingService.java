@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.management.openmbean.InvalidKeyException;
+import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -21,6 +22,10 @@ public class BookingService {
         return bookingRepository.findById(bookingId);
     }
 
+    public Collection<BookingEntity> getAllBookings() {
+        return bookingRepository.findAll();
+    }
+
     public void updateBooking(Long bookingId, BookingEntity updatedBooking){
         BookingEntity bookingRepo = bookingRepository.findById(bookingId).orElseThrow(InvalidKeyException::new);
         bookingRepo.setTime(updatedBooking.getTime());
@@ -32,4 +37,6 @@ public class BookingService {
     public void deleteBooking(Long bookingId){
         bookingRepository.deleteById(bookingId);
     }
+
+    public void deleteAllBookings() {bookingRepository.deleteAll();}
 }
