@@ -1,24 +1,29 @@
-package com.example.TeamProject.model;
+package com.example.TeamProject.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Timestamp;
-
+// TODO controllare @OneToMany e @ManyToOne nelle relative entity
 @Entity
-public class Booking {
+@Table(name = "booking")
+public class BookingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable = false)
     private Timestamp time;
+    @Column
     private String medicalOffice;
+    @Column
     private String reason;
+    /*@ManyToOne
+    private PatientEntity patient;
+    @ManyToOne
+    private SecretaryEntity secretary;*/
 
-    public Booking(){}
+    public BookingEntity(){}
 
-    public Booking(Timestamp time, String medicalOffice, String reason) {
+    public BookingEntity(Timestamp time, String medicalOffice, String reason) {
         this.time = time;
         this.medicalOffice = medicalOffice;
         this.reason = reason;

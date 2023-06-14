@@ -1,22 +1,12 @@
-package com.example.TeamProject.model;
+package com.example.TeamProject.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
 public abstract class Staff {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     private String taxCode;
     private String firstName;
     private String lastName;
     private String personalTelephone;
 
-    public Staff(Long id, String taxCode, String firstName, String lastName, String personalTelephone) {
-        this.id = id;
+    public Staff(String taxCode, String firstName, String lastName, String personalTelephone) {
         this.taxCode = taxCode;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -25,13 +15,6 @@ public abstract class Staff {
 
     public Staff() {}
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTaxCode() {
         return taxCode;

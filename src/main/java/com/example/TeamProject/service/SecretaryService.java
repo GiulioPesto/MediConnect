@@ -1,7 +1,7 @@
 package com.example.TeamProject.service;
 
-import com.example.TeamProject.model.Secretary;
-import com.example.TeamProject.repository.SecretaryDao;
+import com.example.TeamProject.entity.SecretaryEntity;
+import com.example.TeamProject.repository.SecretaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,31 +10,27 @@ import java.util.Optional;
 
 @Service
 public class SecretaryService {
-    private SecretaryDao secretaryDao;
-
     @Autowired
-    public SecretaryService(SecretaryDao secretaryDao) {
-        this.secretaryDao = secretaryDao;
+    private SecretaryRepository secretaryRepository;
+
+    public void addSecretary(SecretaryEntity secretary) {
+        secretaryRepository.save(secretary);
     }
 
-    public void addSecretary(Secretary secretary) {
-        secretaryDao.save(secretary);
+    public Optional<SecretaryEntity> getSecretary(Long secretaryId) {
+        return secretaryRepository.findById(secretaryId);
     }
 
-    public Optional<Secretary> getSecretary(Long secretaryId) {
-        return secretaryDao.findById(secretaryId);
-    }
-
-    public void updateSecretary(Long secretaryId, Secretary updatedSecretary) {
-        Secretary secretaryRepo = secretaryDao.findById(secretaryId).orElseThrow(InvalidKeyException::new);
+    public void updateSecretary(Long secretaryId, SecretaryEntity updatedSecretary) {
+        SecretaryEntity secretaryRepo = secretaryRepository.findById(secretaryId).orElseThrow(InvalidKeyException::new);
         secretaryRepo.setFirstName(updatedSecretary.getFirstName());
         secretaryRepo.setLastName(updatedSecretary.getLastName());
         secretaryRepo.setTaxCode(updatedSecretary.getTaxCode());
         secretaryRepo.setOfficeTelephone(updatedSecretary.getOfficeTelephone());
-        secretaryDao.save(secretaryRepo);
+        secretaryRepository.save(secretaryRepo);
     }
 
     public void deleteSecretary(Long secretaryId) {
-        secretaryDao.deleteById(secretaryId);
+        secretaryRepository.deleteById(secretaryId);
     }
 }

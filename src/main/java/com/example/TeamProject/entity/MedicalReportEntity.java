@@ -1,21 +1,26 @@
-package com.example.TeamProject.model;
+package com.example.TeamProject.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import javax.print.Doc;
 
 @Entity
-public class MedicalReport {
+@Table(name = "medical_report")
+public class MedicalReportEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column
     private String description;
+    /*@ManyToOne
+    private DoctorEntity doctor;
+    @ManyToOne
+    private PatientEntity patient;*/
 
-    public MedicalReport() {
+    public MedicalReportEntity() {
     }
 
-    public MedicalReport(long id, String description) {
+    public MedicalReportEntity(long id, String description) {
         this.id = id;
         this.description = description;
     }

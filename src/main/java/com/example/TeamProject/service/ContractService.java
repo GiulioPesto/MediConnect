@@ -1,7 +1,7 @@
 package com.example.TeamProject.service;
 
-import com.example.TeamProject.model.Contract;
-import com.example.TeamProject.repository.ContractDao;
+import com.example.TeamProject.entity.ContractEntity;
+import com.example.TeamProject.repository.ContractRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,30 +10,26 @@ import java.util.Optional;
 
 @Service
 public class ContractService {
-    private ContractDao contractDao;
-
     @Autowired
-    public ContractService(ContractDao contractDao) {
-        this.contractDao = contractDao;
+    private ContractRepository contractRepository;
+
+    public void addContract(ContractEntity contract) {
+        contractRepository.save(contract);
     }
 
-    public void addContract(Contract contract) {
-        contractDao.save(contract);
+    public Optional<ContractEntity> getContract(Long contractId) {
+        return contractRepository.findById(contractId);
     }
 
-    public Optional<Contract> getContract(Long contractId) {
-        return contractDao.findById(contractId);
-    }
-
-    public void updateContract(Long contractId, Contract updatedContract) {
-        Contract contractRepo = contractDao.findById(contractId).orElseThrow(InvalidKeyException::new);
+    public void updateContract(Long contractId, ContractEntity updatedContract) {
+        ContractEntity contractRepo = contractRepository.findById(contractId).orElseThrow(InvalidKeyException::new);
         contractRepo.setStartDate(updatedContract.getStartDate());
         contractRepo.setEndDate(updatedContract.getEndDate());
         contractRepo.setSalary(updatedContract.getSalary());
-        contractDao.save(contractRepo);
+        contractRepository.save(contractRepo);
     }
 
     public void deleteContract(Long contractId) {
-        contractDao.deleteById(contractId);
+        contractRepository.deleteById(contractId);
     }
 }

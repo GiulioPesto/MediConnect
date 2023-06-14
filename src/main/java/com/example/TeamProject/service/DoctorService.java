@@ -1,7 +1,7 @@
 package com.example.TeamProject.service;
 
-import com.example.TeamProject.model.Doctor;
-import com.example.TeamProject.repository.DoctorDao;
+import com.example.TeamProject.entity.DoctorEntity;
+import com.example.TeamProject.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,33 +10,29 @@ import java.util.Optional;
 
 @Service
 public class DoctorService {
-    private DoctorDao doctorDao;
-
     @Autowired
-    public DoctorService(DoctorDao doctorDao) {
-        this.doctorDao = doctorDao;
+    private DoctorRepository doctorRepository;
+
+    public void addDoctor(DoctorEntity doctor) {
+        doctorRepository.save(doctor);
     }
 
-    public void addDoctor(Doctor doctor) {
-        doctorDao.save(doctor);
+    public Optional<DoctorEntity> getDoctor(Long doctorId) {
+        return doctorRepository.findById(doctorId);
     }
 
-    public Optional<Doctor> getDoctor(Long doctorId) {
-        return doctorDao.findById(doctorId);
-    }
-
-    public void updateDoctor(Long doctorId, Doctor updatedDoctor) {
-        Doctor doctorRepo = doctorDao.findById(doctorId).orElseThrow(InvalidKeyException::new);
+    public void updateDoctor(Long doctorId, DoctorEntity updatedDoctor) {
+        DoctorEntity doctorRepo = doctorRepository.findById(doctorId).orElseThrow(InvalidKeyException::new);
         doctorRepo.setFirstName(updatedDoctor.getFirstName());
         doctorRepo.setLastName(updatedDoctor.getLastName());
         doctorRepo.setTaxCode(updatedDoctor.getTaxCode());
         doctorRepo.setPersonalTelephone(updatedDoctor.getPersonalTelephone());
         doctorRepo.setSpecialization(updatedDoctor.getSpecialization());
         doctorRepo.setOrderRegistration(updatedDoctor.getOrderRegistration());
-        doctorDao.save(doctorRepo);
+        doctorRepository.save(doctorRepo);
     }
 
     public void deleteDoctor(Long doctorId) {
-        doctorDao.deleteById(doctorId);
+        doctorRepository.deleteById(doctorId);
     }
 }

@@ -1,22 +1,27 @@
-package com.example.TeamProject.model;
+package com.example.TeamProject.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
-public class MedicalOffice {
+@Table(name = "medical_office")
+public class MedicalOfficeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column
     private String taxCode;
+    @Column
     private String name;
+    @Column
     private String city;
+    @Column
     private String address;
+    @Column
     private String telephone;
+    /*@OneToMany
+    private ContractEntity contracts;*/
 
-    public MedicalOffice(String taxCode, String name, String city, String address, String telephone) {
+    public MedicalOfficeEntity(String taxCode, String name, String city, String address, String telephone) {
         this.taxCode = taxCode;
         this.name = name;
         this.city = city;
@@ -24,7 +29,7 @@ public class MedicalOffice {
         this.telephone = telephone;
     }
 
-    public MedicalOffice() {}
+    public MedicalOfficeEntity() {}
 
     public Long getId() {
         return id;

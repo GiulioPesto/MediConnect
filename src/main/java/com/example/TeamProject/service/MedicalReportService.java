@@ -1,7 +1,7 @@
 package com.example.TeamProject.service;
 
-import com.example.TeamProject.model.MedicalReport;
-import com.example.TeamProject.repository.MedicalReportDao;
+import com.example.TeamProject.entity.MedicalReportEntity;
+import com.example.TeamProject.repository.MedicalReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,25 +10,24 @@ import java.util.Optional;
 
 @Service
 public class MedicalReportService {
-
     @Autowired
-    MedicalReportDao medicalReportDao;
+    MedicalReportRepository medicalReportRepository;
 
-    public void addMedicalReport(MedicalReport medicalReport){
-        medicalReportDao.save(medicalReport);
+    public void addMedicalReport(MedicalReportEntity medicalReport){
+        medicalReportRepository.save(medicalReport);
     }
 
-    public Optional<MedicalReport> getMedicalReport(Long medicalReportId){
-        return medicalReportDao.findById(medicalReportId);
+    public Optional<MedicalReportEntity> getMedicalReport(Long medicalReportId){
+        return medicalReportRepository.findById(medicalReportId);
     }
 
-    public void updateMedicalReport(Long medicalReportId, MedicalReport updatedMedicalReport){
-        MedicalReport medicalReportRepo = medicalReportDao.findById(medicalReportId).orElseThrow(InvalidKeyException::new);
+    public void updateMedicalReport(Long medicalReportId, MedicalReportEntity updatedMedicalReport){
+        MedicalReportEntity medicalReportRepo = medicalReportRepository.findById(medicalReportId).orElseThrow(InvalidKeyException::new);
         medicalReportRepo.setDescription(updatedMedicalReport.getDescription());
-        medicalReportDao.save(medicalReportRepo);
+        medicalReportRepository.save(medicalReportRepo);
     }
 
     public void deleteMedicalReport(Long medicalReportId){
-        medicalReportDao.deleteById(medicalReportId);
+        medicalReportRepository.deleteById(medicalReportId);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.TeamProject.service;
 
-import com.example.TeamProject.model.MedicalOffice;
-import com.example.TeamProject.repository.MedicalOfficeDao;
+import com.example.TeamProject.entity.MedicalOfficeEntity;
+import com.example.TeamProject.repository.MedicalOfficeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,32 +10,28 @@ import java.util.Optional;
 
 @Service
 public class MedicalOfficeService {
-    private MedicalOfficeDao medicalOfficeDao;
-
     @Autowired
-    public MedicalOfficeService(MedicalOfficeDao medicalOfficeDao) {
-        this.medicalOfficeDao = medicalOfficeDao;
+    private MedicalOfficeRepository medicalOfficeRepository;
+
+    public void addMedicalOffice(MedicalOfficeEntity medicalOffice) {
+        medicalOfficeRepository.save(medicalOffice);
     }
 
-    public void addMedicalOffice(MedicalOffice medicalOffice) {
-        medicalOfficeDao.save(medicalOffice);
+    public Optional<MedicalOfficeEntity> getMedicalOffice(Long medicalOfficeId) {
+        return medicalOfficeRepository.findById(medicalOfficeId);
     }
 
-    public Optional<MedicalOffice> getMedicalOffice(Long medicalOfficeId) {
-        return medicalOfficeDao.findById(medicalOfficeId);
-    }
-
-    public void updateMedicalOffice(Long medicalOfficeId, MedicalOffice updatedMedicalOffice) {
-        MedicalOffice medicalOfficeRepo = medicalOfficeDao.findById(medicalOfficeId).orElseThrow(InvalidKeyException::new);
+    public void updateMedicalOffice(Long medicalOfficeId, MedicalOfficeEntity updatedMedicalOffice) {
+        MedicalOfficeEntity medicalOfficeRepo = medicalOfficeRepository.findById(medicalOfficeId).orElseThrow(InvalidKeyException::new);
         medicalOfficeRepo.setCity(updatedMedicalOffice.getCity());
         medicalOfficeRepo.setName(updatedMedicalOffice.getName());
         medicalOfficeRepo.setAddress(updatedMedicalOffice.getAddress());
         medicalOfficeRepo.setTelephone(updatedMedicalOffice.getTelephone());
         medicalOfficeRepo.setTaxCode(updatedMedicalOffice.getTaxCode());
-        medicalOfficeDao.save(medicalOfficeRepo);
+        medicalOfficeRepository.save(medicalOfficeRepo);
     }
 
     public void deleteMedicalOffice(Long medicalOfficeId) {
-        medicalOfficeDao.deleteById(medicalOfficeId);
+        medicalOfficeRepository.deleteById(medicalOfficeId);
     }
 }

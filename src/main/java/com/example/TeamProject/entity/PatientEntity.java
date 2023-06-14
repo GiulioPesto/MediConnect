@@ -1,22 +1,30 @@
-package com.example.TeamProject.model;
+package com.example.TeamProject.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.springframework.data.annotation.AccessType;
 
 @Entity
-public class Patient {
+@Table(name = "patient")
+public class PatientEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column
     private String taxCode;
+    @Column
     private String firstName;
+    @Column
     private String lastName;
+    @Column
     private String telephone;
+    @Column(nullable = false)
     private String email;
+    /*@OneToMany
+    private MedicalReportEntity medicalReports;
+    @OneToMany
+    private BookingEntity bookings;*/
 
-    public Patient(String taxCode, String firstName, String lastName, String telephone, String email) {
+    public PatientEntity(String taxCode, String firstName, String lastName, String telephone, String email) {
         this.taxCode = taxCode;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,7 +32,7 @@ public class Patient {
         this.email = email;
     }
 
-    public Patient() {}
+    public PatientEntity() {}
 
     public Long getId() {
         return id;

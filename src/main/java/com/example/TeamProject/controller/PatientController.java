@@ -1,41 +1,42 @@
 package com.example.TeamProject.controller;
 
-import com.example.TeamProject.model.Patient;
+import com.example.TeamProject.entity.PatientEntity;
 import com.example.TeamProject.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api/patient/")
 public class PatientController {
+    @Autowired
     private PatientService patientService;
 
-    @Autowired
-    public PatientController(PatientService patientService) {
-        this.patientService = patientService;
-    }
-
     @PostMapping
-    public ResponseEntity<?> registerPatient(@RequestBody Patient patient) {
+    public ResponseEntity<PatientEntity> registerPatient(@RequestBody PatientEntity patient) {
         patientService.addPatient(patient);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Patient> viewPatient(@PathVariable("id") Long patientId) {
-        return ResponseEntity.ok(patientService.getPatient(patientId).get());
+    public ResponseEntity<PatientEntity> viewPatient(@PathVariable("id") Long patientId) {
+        if (patientService.getPatient(patientId).isPresent()) {
+            return ResponseEntity.ok(patientService.getPatient(patientId).get());
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<?> updatePatient(@PathVariable("id") Long patientId,
-                                           @RequestBody Patient patient) {
+    public ResponseEntity<PatientEntity> updatePatient(@PathVariable("id") Long patientId,
+                                                       @RequestBody PatientEntity patient) {
         patientService.updatePatient(patientId, patient);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<?> removePatient(@PathVariable("id") Long patientId) {
+    public ResponseEntity<PatientEntity> removePatient(@PathVariable("id") Long patientId) {
         patientService.deletePatient(patientId);
         return ResponseEntity.ok().build();
     }

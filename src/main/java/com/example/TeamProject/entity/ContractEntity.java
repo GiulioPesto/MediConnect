@@ -1,23 +1,31 @@
-package com.example.TeamProject.model;
+package com.example.TeamProject.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 import java.util.Date;
 
 @Entity
-public class Contract {
+@Table(name = "contract_entity")
+public class ContractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column
     private Date startDate;
+    @Column
     private Date endDate;
+    @Column
     private Double salary;
+    /*@ManyToOne
+    private MedicalOfficeEntity medicalOffice;
+    @ManyToOne
+    private DoctorEntity doctor;
+    @ManyToOne
+    private SecretaryEntity secretary;*/
 
-    public Contract() {}
+    public ContractEntity() {}
 
-    public Contract(Date startDate, Date endDate, Double salary) {
+    public ContractEntity(Date startDate, Date endDate, Double salary) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.salary = salary;

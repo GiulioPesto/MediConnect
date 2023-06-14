@@ -1,7 +1,7 @@
 package com.example.TeamProject.service;
 
-import com.example.TeamProject.model.Booking;
-import com.example.TeamProject.repository.BookingDao;
+import com.example.TeamProject.entity.BookingEntity;
+import com.example.TeamProject.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,30 +10,26 @@ import java.util.Optional;
 
 @Service
 public class BookingService {
-    public BookingDao bookingDao;
-
     @Autowired
-    public BookingService(BookingDao bookingDao){
-        this.bookingDao = bookingDao;
+    public BookingRepository bookingRepository;
+
+    public void addBooking(BookingEntity booking){
+        bookingRepository.save(booking);
     }
 
-    public void addBooking(Booking booking){
-        bookingDao.save(booking);
+    public Optional<BookingEntity> getBooking(Long bookingId){
+        return bookingRepository.findById(bookingId);
     }
 
-    public Optional<Booking> getBooking(Long bookingId){
-        return bookingDao.findById(bookingId);
-    }
-
-    public void updateBooking(Long bookingId, Booking updatedBooking){
-        Booking bookingRepo = bookingDao.findById(bookingId).orElseThrow(InvalidKeyException::new);
+    public void updateBooking(Long bookingId, BookingEntity updatedBooking){
+        BookingEntity bookingRepo = bookingRepository.findById(bookingId).orElseThrow(InvalidKeyException::new);
         bookingRepo.setTime(updatedBooking.getTime());
         bookingRepo.setMedicalOffice(updatedBooking.getMedicalOffice());
         bookingRepo.setReason(updatedBooking.getReason());
-        bookingDao.save(bookingRepo);
+        bookingRepository.save(bookingRepo);
     }
 
     public void deleteBooking(Long bookingId){
-        bookingDao.deleteById(bookingId);
+        bookingRepository.deleteById(bookingId);
     }
 }
