@@ -38,5 +38,5 @@ public class BookingService {
         bookingRepository.deleteById(bookingId);
     }
 
-    public void deleteAllBookings() {bookingRepository.deleteAll();}
+    public void deleteAllBookings() { bookingRepository.deleteAll(); }
 }

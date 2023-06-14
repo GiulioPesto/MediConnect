@@ -50,7 +50,7 @@ public class ContractController {
 
     @DeleteMapping("deleteAll")
     public ResponseEntity<ContractEntity> deleteAllContracts() {
-        contractService.getAllContracts();
+        contractService.deleteAllContracts();
         return ResponseEntity.ok().build();
     }
 }

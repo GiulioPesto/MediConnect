@@ -32,7 +32,7 @@ public class MedicalReportController {
 
     @GetMapping("getAll")
     public ResponseEntity<Collection<MedicalReportEntity>> viewAllMedicalReports() {
-        return ResponseEntity.ok(medicalReportService.getAllMedicalReport());
+        return ResponseEntity.ok(medicalReportService.getAllMedicalReports());
     }
 
     @PutMapping("{id}")

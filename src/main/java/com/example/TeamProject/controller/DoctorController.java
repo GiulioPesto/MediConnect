@@ -50,7 +50,7 @@ public class DoctorController {
 
     @DeleteMapping("deleteAll")
     public ResponseEntity<DoctorEntity> deleteAllDoctors() {
-        doctorService.getAllDoctors();
+        doctorService.deleteAllDoctors();
         return ResponseEntity.ok().build();
     }
 }

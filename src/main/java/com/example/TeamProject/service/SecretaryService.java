@@ -39,5 +39,5 @@ public class SecretaryService {
         secretaryRepository.deleteById(secretaryId);
     }
 
-    public void deleteAllSecretaries() {secretaryRepository.deleteAll();}
+    public void deleteAllSecretaries() { secretaryRepository.deleteAll(); }
 }

@@ -49,7 +49,7 @@ public class PatientController {
     }
 
     @DeleteMapping("deleteAll")
-    public ResponseEntity<PatientEntity> deleteAllPAtients() {
+    public ResponseEntity<PatientEntity> deleteAllPatients() {
         patientService.deleteAllPatients();
         return ResponseEntity.ok().build();
     }

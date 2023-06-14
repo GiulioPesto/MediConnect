@@ -21,7 +21,7 @@ public class MedicalReportService {
         return medicalReportRepository.findById(medicalReportId);
     }
 
-    public Collection<MedicalReportEntity> getAllMedicalReport() {
+    public Collection<MedicalReportEntity> getAllMedicalReports() {
         return medicalReportRepository.findAll();
     }
 
@@ -35,5 +35,5 @@ public class MedicalReportService {
         medicalReportRepository.deleteById(medicalReportId);
     }
 
-    public void deleteAllMedicalReports() {medicalReportRepository.deleteAll();}
+    public void deleteAllMedicalReports() { medicalReportRepository.deleteAll(); }
 }

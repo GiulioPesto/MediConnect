@@ -40,5 +40,5 @@ public class MedicalOfficeService {
         medicalOfficeRepository.deleteById(medicalOfficeId);
     }
 
-    public void deleteAllMedicalOffices() {medicalOfficeRepository.deleteAll();}
+    public void deleteAllMedicalOffices() { medicalOfficeRepository.deleteAll(); }
 }

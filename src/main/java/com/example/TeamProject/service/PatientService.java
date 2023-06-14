@@ -39,5 +39,5 @@ public class PatientService {
         patientRepository.deleteById(patientId);
     }
 
-    public void deleteAllPatients() {patientRepository.deleteAll();}
+    public void deleteAllPatients() { patientRepository.deleteAll(); }
 }
