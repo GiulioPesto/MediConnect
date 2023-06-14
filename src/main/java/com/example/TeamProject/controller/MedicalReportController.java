@@ -1,6 +1,10 @@
 package com.example.TeamProject.controller;
 
+<<<<<<< HEAD
 import com.example.TeamProject.entity.MedicalReportEntity;
+=======
+import com.example.TeamProject.entity.MedicalReport;
+>>>>>>> 70a22886414510687786d1c622082f075d5b9990
 import com.example.TeamProject.service.MedicalReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,8 +17,18 @@ public class MedicalReportController {
     @Autowired
     private MedicalReportService medicalReportService;
 
+<<<<<<< HEAD
     @PostMapping("create")
     public ResponseEntity<MedicalReportEntity> addMedicalReport(@RequestBody MedicalReportEntity medicalReport){
+=======
+    @Autowired
+    public MedicalReportController(MedicalReportService medicalReportService){
+        this.medicalReportService = medicalReportService;
+    }
+
+    @PostMapping
+    public ResponseEntity<?> addMedicalReport(@RequestBody MedicalReport medicalReport){
+>>>>>>> 70a22886414510687786d1c622082f075d5b9990
         medicalReportService.addMedicalReport(medicalReport);
         return ResponseEntity.ok().build();
     }

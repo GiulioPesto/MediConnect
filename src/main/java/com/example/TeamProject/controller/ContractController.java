@@ -1,6 +1,10 @@
 package com.example.TeamProject.controller;
 
+<<<<<<< HEAD
 import com.example.TeamProject.entity.ContractEntity;
+=======
+import com.example.TeamProject.entity.Contract;
+>>>>>>> 70a22886414510687786d1c622082f075d5b9990
 import com.example.TeamProject.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,12 @@
 package com.example.TeamProject.service;
 
+<<<<<<< HEAD
 import com.example.TeamProject.entity.ContractEntity;
 import com.example.TeamProject.repository.ContractRepository;
+=======
+import com.example.TeamProject.entity.Contract;
+import com.example.TeamProject.repository.ContractDao;
+>>>>>>> 70a22886414510687786d1c622082f075d5b9990
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
