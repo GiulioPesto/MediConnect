@@ -1,10 +1,5 @@
 package com.example.TeamProject.controller;
-
-<<<<<<< HEAD
 import com.example.TeamProject.entity.PatientEntity;
-=======
-import com.example.TeamProject.entity.Patient;
->>>>>>> 70a22886414510687786d1c622082f075d5b9990
 import com.example.TeamProject.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

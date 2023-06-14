@@ -9,7 +9,7 @@ import javax.print.Doc;
 public class MedicalReportEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     @Column
     private String description;
     /*@ManyToOne
@@ -20,7 +20,7 @@ public class MedicalReportEntity {
     public MedicalReportEntity() {
     }
 
-    public MedicalReportEntity(long id, String description) {
+    public MedicalReportEntity(Long id, String description) {
         this.id = id;
         this.description = description;
     }
@@ -29,7 +29,7 @@ public class MedicalReportEntity {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -10,6 +10,8 @@ public class SecretaryEntity extends Staff {
     private Long id;
     @Column
     private String officeTelephone;
+    /*@OneToMany
+    private BookingEntity bookings;*/
 
     public SecretaryEntity(Long id, String taxCode, String firstName, String lastName, String personalTelephone, String officeTelephone) {
         super(taxCode, firstName, lastName, personalTelephone);

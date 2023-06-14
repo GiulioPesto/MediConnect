@@ -1,10 +1,5 @@
 package com.example.TeamProject.entity;
-<<<<<<<< HEAD:src/main/java/com/example/TeamProject/entity/ContractEntity.java
-
 import jakarta.persistence.*;
-========
->>>>>>>> 70a22886414510687786d1c622082f075d5b9990:src/main/java/com/example/TeamProject/entity/Contract.java
-
 import java.util.Date;
 
 @Entity
