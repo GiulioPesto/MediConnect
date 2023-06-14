@@ -9,15 +9,15 @@ public class PatientEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column
+    @Column(name = "tax_code")
     private String taxCode;
-    @Column
+    @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Column
+    @Column(name = "last_name", nullable = false)
     private String lastName;
-    @Column
+    @Column(name = "telephone", nullable = false)
     private String telephone;
-    @Column(nullable = false)
+    @Column(name = "email", nullable = false)
     private String email;
     /*@OneToMany
     private MedicalReportEntity medicalReports;

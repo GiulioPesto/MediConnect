@@ -8,15 +8,15 @@ public class MedicalOfficeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column
+    @Column(name = "tax_code")
     private String taxCode;
-    @Column
+    @Column(name = "name")
     private String name;
-    @Column
+    @Column(name = "city")
     private String city;
-    @Column
+    @Column(name =" address")
     private String address;
-    @Column
+    @Column(name = "telephone")
     private String telephone;
     /*@OneToMany
     private ContractEntity contracts;*/

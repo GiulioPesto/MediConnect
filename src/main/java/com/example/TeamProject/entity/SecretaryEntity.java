@@ -5,17 +5,13 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "secretary")
 public class SecretaryEntity extends Staff {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column
+    @Column(name = "office_telephone")
     private String officeTelephone;
     /*@OneToMany
     private BookingEntity bookings;*/
 
     public SecretaryEntity(Long id, String taxCode, String firstName, String lastName, String personalTelephone, String officeTelephone) {
-        super(taxCode, firstName, lastName, personalTelephone);
-        this.id = id;
+        super(id, taxCode, firstName, lastName, personalTelephone);
         this.officeTelephone = officeTelephone;
     }
 
@@ -28,8 +24,4 @@ public class SecretaryEntity extends Staff {
     public void setOfficeTelephone(String officeTelephone) {
         this.officeTelephone = officeTelephone;
     }
-
-    public Long getId() { return id; }
-
-    public void setId(Long id) { this.id = id; }
 }

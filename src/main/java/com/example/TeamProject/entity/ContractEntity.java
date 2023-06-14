@@ -8,11 +8,11 @@ public class ContractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column
+    @Column(name = "start_date")
     private Date startDate;
-    @Column
+    @Column(name = "end_date")
     private Date endDate;
-    @Column
+    @Column(name = "salary")
     private Double salary;
     /*@ManyToOne
     private MedicalOfficeEntity medicalOffice;

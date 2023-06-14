@@ -10,11 +10,11 @@ public class BookingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable = false)
+    @Column(name = "time", nullable = false)
     private Timestamp time;
-    @Column
+    @Column(name = "medical_office")
     private String medicalOffice;
-    @Column
+    @Column(name = "reason")
     private String reason;
     /*@ManyToOne
     private PatientEntity patient;

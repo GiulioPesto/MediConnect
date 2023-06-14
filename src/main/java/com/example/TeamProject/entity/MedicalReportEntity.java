@@ -10,7 +10,7 @@ public class MedicalReportEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column
+    @Column(name = "description", nullable = false)
     private String description;
     /*@ManyToOne
     private DoctorEntity doctor;
