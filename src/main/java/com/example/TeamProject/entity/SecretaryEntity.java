@@ -20,10 +20,10 @@ public class SecretaryEntity extends Auditable<User> {
     private String lastName;
     @Column(name = "personal_telephone")
     private String personalTelephone;
-    @OneToMany(mappedBy = "secretary", cascade = CascadeType.ALL)
-    private Set<ContractEntity> contracts;
     @Column(name = "office_telephone")
     private String officeTelephone;
+    @OneToMany(mappedBy = "secretary", cascade = CascadeType.ALL)
+    private Set<ContractEntity> contracts;
     @OneToMany(mappedBy = "secretary", cascade = CascadeType.ALL)
     private Set<BookingEntity> bookings;
 

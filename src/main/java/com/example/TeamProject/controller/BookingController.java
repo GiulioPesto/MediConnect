@@ -16,8 +16,11 @@ public class BookingController {
     private BookingService bookingService;
 
     @PostMapping
-    public ResponseEntity<BookingEntity> registerBooking(@RequestBody BookingEntity booking){
-        bookingService.addBooking(booking);
+    public ResponseEntity<BookingEntity> registerBooking(@RequestBody BookingEntity booking,
+                                                         @RequestParam Long patient_id,
+                                                         @RequestParam Long doctor_id,
+                                                         @RequestParam Long secretary_id){
+        bookingService.addBooking(booking, patient_id, doctor_id, secretary_id);
         return ResponseEntity.ok().build();
     }
 

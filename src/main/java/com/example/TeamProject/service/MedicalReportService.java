@@ -1,6 +1,8 @@
 package com.example.TeamProject.service;
 import com.example.TeamProject.entity.MedicalReportEntity;
+import com.example.TeamProject.repository.DoctorRepository;
 import com.example.TeamProject.repository.MedicalReportRepository;
+import com.example.TeamProject.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +13,15 @@ import java.util.Optional;
 @Service
 public class MedicalReportService {
     @Autowired
-    MedicalReportRepository medicalReportRepository;
+    private MedicalReportRepository medicalReportRepository;
+    @Autowired
+    private DoctorRepository doctorRepository;
+    @Autowired
+    private PatientRepository patientRepository;
 
-    public void addMedicalReport(MedicalReportEntity medicalReport){
+    public void addMedicalReport(MedicalReportEntity medicalReport, Long doctor_id, Long patient_id){
+        medicalReport.setDoctor(doctorRepository.findById(doctor_id).orElseThrow());
+        medicalReport.setPatient(patientRepository.findById(patient_id).orElseThrow());
         medicalReportRepository.save(medicalReport);
     }
 

@@ -15,9 +15,11 @@ public class MedicalReportController {
     @Autowired
     private MedicalReportService medicalReportService;
 
-    @PostMapping("create")
-    public ResponseEntity<MedicalReportEntity> registerMedicalReport(@RequestBody MedicalReportEntity medicalReport){
-        medicalReportService.addMedicalReport(medicalReport);
+    @PostMapping
+    public ResponseEntity<MedicalReportEntity> registerMedicalReport(@RequestBody MedicalReportEntity medicalReport,
+                                                                     @RequestParam Long doctor_id,
+                                                                     @RequestParam Long patient_id){
+        medicalReportService.addMedicalReport(medicalReport, doctor_id, patient_id);
         return ResponseEntity.ok().build();
     }
 

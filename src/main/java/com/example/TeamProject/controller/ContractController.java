@@ -16,8 +16,11 @@ public class ContractController {
     private ContractService contractService;
 
     @PostMapping
-    public ResponseEntity<ContractEntity> registerContract(@RequestBody ContractEntity contract) {
-        contractService.addContract(contract);
+    public ResponseEntity<ContractEntity> registerContract(@RequestBody ContractEntity contract,
+                                                           @RequestParam Long medical_office_id,
+                                                           @RequestParam(required = false) Long doctor_id,
+                                                           @RequestParam(required = false) Long secretary_id) {
+        contractService.addContract(contract, medical_office_id, doctor_id, secretary_id);
         return ResponseEntity.ok().build();
     }
 

@@ -2,7 +2,7 @@ package com.example.TeamProject.service;
 
 import com.example.TeamProject.entity.BookingEntity;
 import com.example.TeamProject.entity.ContractEntity;
-import com.example.TeamProject.repository.ContractRepository;
+import com.example.TeamProject.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +14,18 @@ import java.util.Optional;
 public class ContractService {
     @Autowired
     private ContractRepository contractRepository;
+    @Autowired
+    private MedicalOfficeRepository medicalOfficeRepository;
+    @Autowired
+    private DoctorRepository doctorRepository;
+    @Autowired
+    private SecretaryRepository secretaryRepository;
 
-    public void addContract(ContractEntity contract) {
+    public void addContract(ContractEntity contract, Long medical_office_id, Long doctor_id, Long secretary_id) {
+        contract.setMedicalOffice(medicalOfficeRepository.findById(medical_office_id).orElseThrow());
+        if (doctor_id != null) {
+            contract.setDoctor(doctorRepository.findById(doctor_id).orElseThrow());
+        } else { contract.setSecretary(secretaryRepository.findById(secretary_id).orElseThrow()); }
         contractRepository.save(contract);
     }
 

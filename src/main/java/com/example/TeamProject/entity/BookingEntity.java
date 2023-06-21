@@ -1,5 +1,7 @@
 package com.example.TeamProject.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import com.example.TeamProject.config.*;
 import org.springframework.security.core.userdetails.User;
@@ -22,12 +24,15 @@ public class BookingEntity extends Auditable<User> {
     private String medicalOffice;
     @Column(name = "reason")
     private String reason;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
     private PatientEntity patient;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "secretary_id", nullable = false)
     private SecretaryEntity secretary;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "doctor_id", nullable = false)
     private DoctorEntity doctor;

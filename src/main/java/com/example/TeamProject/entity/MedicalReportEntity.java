@@ -1,5 +1,7 @@
 package com.example.TeamProject.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import javax.print.Doc;
@@ -12,9 +14,11 @@ public class MedicalReportEntity {
     private Long id;
     @Column(name = "description", nullable = false)
     private String description;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "doctor_id", nullable = false)
     private DoctorEntity doctor;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
     private PatientEntity patient;

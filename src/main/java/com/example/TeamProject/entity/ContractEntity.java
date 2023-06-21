@@ -1,4 +1,6 @@
 package com.example.TeamProject.entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.apache.el.stream.Optional;
 
@@ -16,12 +18,15 @@ public class ContractEntity {
     private Date endDate;
     @Column(name = "salary")
     private Double salary;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "medical_office_id", nullable = false)
     private MedicalOfficeEntity medicalOffice;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "secretary_id")
     private SecretaryEntity secretary;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "doctor_id")
     private DoctorEntity doctor;

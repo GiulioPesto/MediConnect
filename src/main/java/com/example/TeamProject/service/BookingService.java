@@ -1,7 +1,8 @@
 package com.example.TeamProject.service;
 
 import com.example.TeamProject.entity.BookingEntity;
-import com.example.TeamProject.repository.BookingRepository;
+import com.example.TeamProject.entity.PatientEntity;
+import com.example.TeamProject.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +17,18 @@ import java.util.Optional;
 @Service
 public class BookingService {
     @Autowired
-    public BookingRepository bookingRepository;
+    private BookingRepository bookingRepository;
+    @Autowired
+    private DoctorRepository doctorRepository;
+    @Autowired
+    private PatientRepository patientRepository;
+    @Autowired
+    private SecretaryRepository secretaryRepository;
 
-    public void addBooking(BookingEntity booking){
+    public void addBooking(BookingEntity booking, Long patient_id, Long doctor_id, Long secretary_id){
+        booking.setDoctor(doctorRepository.findById(doctor_id).orElseThrow());
+        booking.setPatient(patientRepository.findById(patient_id).orElseThrow());
+        booking.setSecretary(secretaryRepository.findById(secretary_id).orElseThrow());
         bookingRepository.save(booking);
     }
 
