@@ -9,26 +9,27 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.sql.Date;
+import java.util.Date;
 
+import static jakarta.persistence.TemporalType.DATE;
 import static jakarta.persistence.TemporalType.TIMESTAMP;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-abstract class Auditable<U> {
+public abstract class Auditable<U> {
 
     @CreatedBy
     protected U createdBy;
 
     @CreatedDate
-    @Temporal(TIMESTAMP)
+    @Temporal(DATE)
     protected Date createdDate;
 
     @LastModifiedBy
     protected U lastModifiedBy;
 
     @LastModifiedDate
-    @Temporal(TIMESTAMP)
+    @Temporal(DATE)
     protected Date lastModifiedDate;
 
     public U getCreatedBy() {

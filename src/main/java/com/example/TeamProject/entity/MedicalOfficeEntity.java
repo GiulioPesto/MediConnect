@@ -2,6 +2,8 @@ package com.example.TeamProject.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "medical_office")
 public class MedicalOfficeEntity {
@@ -18,8 +20,8 @@ public class MedicalOfficeEntity {
     private String address;
     @Column(name = "telephone")
     private String telephone;
-    /*@OneToMany
-    private ContractEntity contracts;*/
+    @OneToMany(mappedBy = "medicalOffice", cascade = CascadeType.ALL)
+    private Set<ContractEntity> contracts;
 
     public MedicalOfficeEntity(String taxCode, String name, String city, String address, String telephone) {
         this.taxCode = taxCode;
@@ -78,4 +80,8 @@ public class MedicalOfficeEntity {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+
+    public Set<ContractEntity> getContracts() { return contracts; }
+
+    public void setContracts(Set<ContractEntity> contracts) { this.contracts = contracts; }
 }

@@ -1,5 +1,7 @@
 package com.example.TeamProject.entity;
 import jakarta.persistence.*;
+import org.apache.el.stream.Optional;
+
 import java.util.Date;
 
 @Entity
@@ -14,12 +16,15 @@ public class ContractEntity {
     private Date endDate;
     @Column(name = "salary")
     private Double salary;
-    /*@ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "medical_office_id", nullable = false)
     private MedicalOfficeEntity medicalOffice;
     @ManyToOne
-    private DoctorEntity doctor;
+    @JoinColumn(name = "secretary_id")
+    private SecretaryEntity secretary;
     @ManyToOne
-    private SecretaryEntity secretary;*/
+    @JoinColumn(name = "doctor_id")
+    private DoctorEntity doctor;
 
     public ContractEntity() {}
 
@@ -60,4 +65,16 @@ public class ContractEntity {
     public void setSalary(Double salary) {
         this.salary = salary;
     }
+
+    public MedicalOfficeEntity getMedicalOffice() { return medicalOffice; }
+
+    public void setMedicalOffice(MedicalOfficeEntity medicalOffice) { this.medicalOffice = medicalOffice; }
+
+    public SecretaryEntity getSecretary() { return secretary; }
+
+    public void setSecretary(SecretaryEntity secretary) { this.secretary = secretary; }
+
+    public DoctorEntity getDoctor() { return doctor; }
+
+    public void setDoctor(DoctorEntity doctor) { this.doctor = doctor; }
 }

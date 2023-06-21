@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.management.openmbean.InvalidKeyException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -26,12 +30,13 @@ public class BookingService {
         return bookingRepository.findAll();
     }
 
-    public void updateBooking(Long bookingId, BookingEntity updatedBooking){
+    public BookingEntity updateBooking(Long bookingId, BookingEntity updatedBooking){
         BookingEntity bookingRepo = bookingRepository.findById(bookingId).orElseThrow(InvalidKeyException::new);
         bookingRepo.setTime(updatedBooking.getTime());
         bookingRepo.setMedicalOffice(updatedBooking.getMedicalOffice());
         bookingRepo.setReason(updatedBooking.getReason());
         bookingRepository.save(bookingRepo);
+        return bookingRepo;
     }
 
     public void deleteBooking(Long bookingId){

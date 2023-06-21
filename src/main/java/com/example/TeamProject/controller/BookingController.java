@@ -38,7 +38,7 @@ public class BookingController {
 
     @PutMapping("{id}")
     public ResponseEntity<BookingEntity> updateBooking(@PathVariable("id") Long bookingId, @RequestBody BookingEntity booking){
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(bookingService.updateBooking(bookingId, booking));
     }
 
     @DeleteMapping("{id}")

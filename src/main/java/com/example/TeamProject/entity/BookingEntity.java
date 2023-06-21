@@ -1,29 +1,40 @@
 package com.example.TeamProject.entity;
 
 import jakarta.persistence.*;
+import com.example.TeamProject.config.*;
+import org.springframework.security.core.userdetails.User;
 
 import java.sql.Timestamp;
+import java.time.temporal.TemporalAccessor;
+import java.util.Date;
+import java.util.Optional;
+
 // TODO controllare @OneToMany e @ManyToOne nelle relative entity
 @Entity
 @Table(name = "booking")
-public class BookingEntity {
+public class BookingEntity extends Auditable<User> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "time", nullable = false)
-    private Timestamp time;
+    private Date time;
     @Column(name = "medical_office")
     private String medicalOffice;
     @Column(name = "reason")
     private String reason;
-    /*@ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "patient_id", nullable = false)
     private PatientEntity patient;
     @ManyToOne
-    private SecretaryEntity secretary;*/
+    @JoinColumn(name = "secretary_id", nullable = false)
+    private SecretaryEntity secretary;
+    @ManyToOne
+    @JoinColumn(name = "doctor_id", nullable = false)
+    private DoctorEntity doctor;
 
     public BookingEntity(){}
 
-    public BookingEntity(Timestamp time, String medicalOffice, String reason) {
+    public BookingEntity(Date time, String medicalOffice, String reason) {
         this.time = time;
         this.medicalOffice = medicalOffice;
         this.reason = reason;
@@ -33,15 +44,16 @@ public class BookingEntity {
         return id;
     }
 
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Timestamp getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
@@ -60,4 +72,16 @@ public class BookingEntity {
     public void setReason(String reason) {
         this.reason = reason;
     }
+
+    public PatientEntity getPatient() { return patient; }
+
+    public void setPatient(PatientEntity patient) { this.patient = patient; }
+
+    public SecretaryEntity getSecretary() { return secretary; }
+
+    public void setSecretary(SecretaryEntity secretary) { this.secretary = secretary; }
+
+    public DoctorEntity getDoctor() { return doctor; }
+
+    public void setDoctor(DoctorEntity doctor) { this.doctor = doctor; }
 }

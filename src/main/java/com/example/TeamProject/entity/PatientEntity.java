@@ -1,11 +1,15 @@
 package com.example.TeamProject.entity;
 
+import com.example.TeamProject.config.Auditable;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.AccessType;
+import org.springframework.security.core.userdetails.User;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "patient")
-public class PatientEntity {
+public class PatientEntity extends Auditable<User> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,10 +23,10 @@ public class PatientEntity {
     private String telephone;
     @Column(name = "email", nullable = false)
     private String email;
-    /*@OneToMany
-    private MedicalReportEntity medicalReports;
-    @OneToMany
-    private BookingEntity bookings;*/
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    private Set<MedicalReportEntity> medicalReports;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    private Set<BookingEntity> bookings;
 
     public PatientEntity(String taxCode, String firstName, String lastName, String telephone, String email) {
         this.taxCode = taxCode;
@@ -81,4 +85,12 @@ public class PatientEntity {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Set<MedicalReportEntity> getMedicalReports() { return medicalReports; }
+
+    public void setMedicalReports(Set<MedicalReportEntity> medicalReports) { this.medicalReports = medicalReports; }
+
+    public Set<BookingEntity> getBookings() { return bookings; }
+
+    public void setBookings(Set<BookingEntity> bookings) { this.bookings = bookings; }
 }

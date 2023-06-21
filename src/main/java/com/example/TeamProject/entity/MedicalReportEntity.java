@@ -12,10 +12,12 @@ public class MedicalReportEntity {
     private Long id;
     @Column(name = "description", nullable = false)
     private String description;
-    /*@ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "doctor_id", nullable = false)
     private DoctorEntity doctor;
     @ManyToOne
-    private PatientEntity patient;*/
+    @JoinColumn(name = "patient_id", nullable = false)
+    private PatientEntity patient;
 
     public MedicalReportEntity() {
     }
@@ -40,4 +42,12 @@ public class MedicalReportEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public DoctorEntity getDoctor() { return doctor; }
+
+    public void setDoctor(DoctorEntity doctor) { this.doctor = doctor; }
+
+    public PatientEntity getPatient() { return patient; }
+
+    public void setPatient(PatientEntity patient) { this.patient = patient; }
 }
