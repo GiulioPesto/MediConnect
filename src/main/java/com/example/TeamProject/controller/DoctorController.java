@@ -1,6 +1,7 @@
 package com.example.TeamProject.controller;
 import com.example.TeamProject.entity.BookingEntity;
 import com.example.TeamProject.entity.DoctorEntity;
+import com.example.TeamProject.entity.PatientEntity;
 import com.example.TeamProject.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,10 +25,10 @@ public class DoctorController {
     @GetMapping("{id}")
     public ResponseEntity<DoctorEntity> viewDoctor(@PathVariable("id") Long doctorId) {
         if (doctorService.getDoctor(doctorId).isPresent()) {
-        return ResponseEntity.ok(doctorService.getDoctor(doctorId).get());
+            return ResponseEntity.ok(doctorService.getDoctor(doctorId).get());
         } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("getAll")
@@ -45,6 +46,12 @@ public class DoctorController {
     @DeleteMapping("{id}")
     public ResponseEntity<DoctorEntity> removeDoctor(@PathVariable("id") Long doctorId) {
         doctorService.deleteDoctor(doctorId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("reactivate/{id}")
+    public ResponseEntity<DoctorEntity> reactivateDoctor(@PathVariable("id") Long doctorId) {
+        doctorService.reactivateDoctor(doctorId);
         return ResponseEntity.ok().build();
     }
 

@@ -1,6 +1,8 @@
 package com.example.TeamProject.entity;
 
 import com.example.TeamProject.config.Auditable;
+import com.example.TeamProject.enums.AccountActivationStateEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.security.core.userdetails.User;
 
@@ -24,6 +26,9 @@ public class DoctorEntity extends Auditable<User> {
     private String specialization;
     @Column(name = "order_registration")
     private String orderRegistration;
+    @JsonIgnore
+    @Column(name = "activation")
+    private AccountActivationStateEnum activation = AccountActivationStateEnum.ACTIVE;
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
     private Set<ContractEntity> contracts;
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
@@ -105,4 +110,8 @@ public class DoctorEntity extends Auditable<User> {
     public Set<MedicalReportEntity> getMedicalReports() { return medicalReports; }
 
     public void setMedicalReports(Set<MedicalReportEntity> medicalReports) { this.medicalReports = medicalReports; }
+
+    public AccountActivationStateEnum getActivation() { return activation; }
+
+    public void setActivation(AccountActivationStateEnum activation) { this.activation = activation; }
 }

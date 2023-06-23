@@ -1,5 +1,7 @@
 package com.example.TeamProject.config;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonKey;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Temporal;
@@ -18,16 +20,20 @@ import static jakarta.persistence.TemporalType.TIMESTAMP;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class Auditable<U> {
 
+    @JsonIgnore
     @CreatedBy
     protected U createdBy;
 
+    @JsonIgnore
     @CreatedDate
     @Temporal(DATE)
     protected Date createdDate;
 
+    @JsonIgnore
     @LastModifiedBy
     protected U lastModifiedBy;
 
+    @JsonIgnore
     @LastModifiedDate
     @Temporal(DATE)
     protected Date lastModifiedDate;

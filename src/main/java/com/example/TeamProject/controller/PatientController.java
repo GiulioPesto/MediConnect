@@ -48,6 +48,12 @@ public class PatientController {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping("reactivate/{id}")
+    public ResponseEntity<PatientEntity> reactivatePatient(@PathVariable("id") Long patientId) {
+        patientService.reactivatePatient(patientId);
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping("deleteAll")
     public ResponseEntity<PatientEntity> deleteAllPatients() {
         patientService.deleteAllPatients();

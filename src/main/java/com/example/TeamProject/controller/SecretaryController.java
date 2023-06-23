@@ -1,5 +1,6 @@
 package com.example.TeamProject.controller;
 import com.example.TeamProject.entity.BookingEntity;
+import com.example.TeamProject.entity.PatientEntity;
 import com.example.TeamProject.entity.SecretaryEntity;
 import com.example.TeamProject.service.SecretaryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,12 @@ public class SecretaryController {
     @DeleteMapping("{id}")
     public ResponseEntity<SecretaryEntity> removeSecretary(@PathVariable("id") Long secretaryId) {
         secretaryService.deleteSecretary(secretaryId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("reactivate/{id}")
+    public ResponseEntity<SecretaryEntity> reactivateSecretary(@PathVariable("id") Long secretaryId) {
+        secretaryService.reactivateSecretary(secretaryId);
         return ResponseEntity.ok().build();
     }
 

@@ -1,5 +1,7 @@
 package com.example.TeamProject.entity;
 
+import com.example.TeamProject.enums.AccountActivationStateEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -20,6 +22,9 @@ public class MedicalOfficeEntity {
     private String address;
     @Column(name = "telephone")
     private String telephone;
+    @JsonIgnore
+    @Column(name = "activation")
+    private AccountActivationStateEnum activation = AccountActivationStateEnum.ACTIVE;
     @OneToMany(mappedBy = "medicalOffice", cascade = CascadeType.ALL)
     private Set<ContractEntity> contracts;
 
@@ -84,4 +89,8 @@ public class MedicalOfficeEntity {
     public Set<ContractEntity> getContracts() { return contracts; }
 
     public void setContracts(Set<ContractEntity> contracts) { this.contracts = contracts; }
+
+    public AccountActivationStateEnum getActivation() { return activation; }
+
+    public void setActivation(AccountActivationStateEnum activation) { this.activation = activation; }
 }

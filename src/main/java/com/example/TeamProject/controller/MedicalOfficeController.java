@@ -1,6 +1,7 @@
 package com.example.TeamProject.controller;
 import com.example.TeamProject.entity.BookingEntity;
 import com.example.TeamProject.entity.MedicalOfficeEntity;
+import com.example.TeamProject.entity.PatientEntity;
 import com.example.TeamProject.service.MedicalOfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,6 +48,12 @@ public class MedicalOfficeController {
     @DeleteMapping("{id}")
     public ResponseEntity<MedicalOfficeEntity> deleteMedicalOffice(@PathVariable("id") Long medicalOfficeId) {
         medicalOfficeService.deleteMedicalOffice(medicalOfficeId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("reactivate/{id}")
+    public ResponseEntity<MedicalOfficeEntity> reactivateMedicalOffice(@PathVariable("id") Long medicalOfficeId) {
+        medicalOfficeService.reactivateMedicalOffice(medicalOfficeId);
         return ResponseEntity.ok().build();
     }
 
