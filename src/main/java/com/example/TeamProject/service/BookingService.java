@@ -1,17 +1,12 @@
 package com.example.TeamProject.service;
 
 import com.example.TeamProject.entity.BookingEntity;
-import com.example.TeamProject.entity.PatientEntity;
 import com.example.TeamProject.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.management.openmbean.InvalidKeyException;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Optional;
 
 @Service

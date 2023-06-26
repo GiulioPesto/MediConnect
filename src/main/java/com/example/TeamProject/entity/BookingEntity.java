@@ -1,15 +1,10 @@
 package com.example.TeamProject.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.example.TeamProject.config.Auditable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import com.example.TeamProject.config.*;
 import org.springframework.security.core.userdetails.User;
-
-import java.sql.Timestamp;
-import java.time.temporal.TemporalAccessor;
 import java.util.Date;
-import java.util.Optional;
 
 // TODO controllare @OneToMany e @ManyToOne nelle relative entity
 @Entity

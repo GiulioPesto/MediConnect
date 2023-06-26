@@ -71,6 +71,9 @@ Prenotazione:
 		listaPrenotazioni(): restituisce la lista di tutte le prenotazioni presenti nel database.
 		cancellaPrenotazione(int idPrenotazione): permette di cancellare una booking specificata dall'ID. 	
 
+Swagger UI documentation:
+
+http://localhost:8080/swagger-ui/index.html#/
 
 Diagrama ER:
 
