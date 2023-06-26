@@ -50,4 +50,6 @@ public class ContractService {
     }
 
     public void deleteAllContracts() { contractRepository.deleteAll(); }
+
+    public void test() {}
 }

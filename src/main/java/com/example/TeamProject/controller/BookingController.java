@@ -38,7 +38,7 @@ public class BookingController {
         return ResponseEntity.ok(bookingService.getAllBookings());
     }
 
-    @GetMapping("/test")
+    @GetMapping("test")
     public ResponseEntity<String> test() {
         bookingService.test();
         return ResponseEntity.ok("test");

@@ -36,6 +36,12 @@ public class SecretaryController {
         return ResponseEntity.ok(secretaryService.getAllSecretaries());
     }
 
+    @GetMapping("test")
+    public ResponseEntity<String> test() {
+        secretaryService.test();
+        return ResponseEntity.ok("test");
+    }
+
     @PutMapping("{id}")
     public ResponseEntity<SecretaryEntity> updateSecretary(@PathVariable("id") Long secretaryId,
                                                            @RequestBody SecretaryEntity secretary) {

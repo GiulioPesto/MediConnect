@@ -52,7 +52,5 @@ public class BookingService {
 
     public void deleteAllBookings() { bookingRepository.deleteAll(); }
 
-    public void test() {
-        System.out.println();
-    }
+    public void test() {}
 }

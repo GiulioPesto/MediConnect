@@ -38,6 +38,12 @@ public class MedicalOfficeController {
         return ResponseEntity.ok(medicalOfficeService.getAllMedicalOffices());
     }
 
+    @GetMapping("test")
+    public ResponseEntity<String> test() {
+        medicalOfficeService.test();
+        return ResponseEntity.ok("test");
+    }
+
     @PutMapping("{id}")
     public ResponseEntity<MedicalOfficeEntity> updateMedicalOffice(@PathVariable("id") Long medicalOfficeId,
                                                                    @RequestBody MedicalOfficeEntity updatedMedicalOffice) {

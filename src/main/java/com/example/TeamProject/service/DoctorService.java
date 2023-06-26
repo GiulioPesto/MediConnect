@@ -52,4 +52,6 @@ public class DoctorService {
     }
 
     public void deleteAllDoctors() { doctorRepository.findAll().forEach(a -> deleteDoctor(a.getId())); }
+
+    public void test() {}
 }

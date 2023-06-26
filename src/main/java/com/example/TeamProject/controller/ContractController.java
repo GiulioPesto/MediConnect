@@ -38,6 +38,12 @@ public class ContractController {
         return ResponseEntity.ok(contractService.getAllContracts());
     }
 
+    @GetMapping("test")
+    public ResponseEntity<String> test() {
+        contractService.test();
+        return ResponseEntity.ok("test");
+    }
+
     @PutMapping("{id}")
     public ResponseEntity<ContractEntity> updateContract(@PathVariable("id") Long contractId,
                                                          @RequestBody ContractEntity contract) {

@@ -37,6 +37,12 @@ public class MedicalReportController {
         return ResponseEntity.ok(medicalReportService.getAllMedicalReports());
     }
 
+    @GetMapping("test")
+    public ResponseEntity<String> test() {
+        medicalReportService.test();
+        return ResponseEntity.ok("test");
+    }
+
     @PutMapping("{id}")
     public ResponseEntity<MedicalReportEntity> updateMedicalReport(@PathVariable("id") Long id, @RequestBody MedicalReportEntity medicalReport){
         medicalReportService.updateMedicalReport(id, medicalReport);

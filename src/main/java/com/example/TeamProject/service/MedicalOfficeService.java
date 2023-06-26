@@ -52,4 +52,6 @@ public class MedicalOfficeService {
     }
 
     public void deleteAllMedicalOffices() { medicalOfficeRepository.findAll().forEach(a -> deleteMedicalOffice(a.getId())); }
+
+    public void test() {}
 }

@@ -44,4 +44,6 @@ public class MedicalReportService {
     }
 
     public void deleteAllMedicalReports() { medicalReportRepository.deleteAll(); }
+
+    public void test() {}
 }

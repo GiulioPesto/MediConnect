@@ -51,4 +51,6 @@ public class SecretaryService {
     }
 
     public void deleteAllSecretaries() { secretaryRepository.findAll().forEach(a -> deleteSecretary(a.getId())); }
+
+    public void test() {}
 }
