@@ -38,9 +38,15 @@ public class BookingController {
         return ResponseEntity.ok(bookingService.getAllBookings());
     }
 
+    @GetMapping("/test")
+    public ResponseEntity<String> test() {
+        bookingService.test();
+        return ResponseEntity.ok("test");
+    }
 
     @PutMapping("{id}")
     public ResponseEntity<BookingEntity> updateBooking(@PathVariable("id") Long bookingId, @RequestBody BookingEntity booking){
+
         return ResponseEntity.ok(bookingService.updateBooking(bookingId, booking));
     }
 

@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.management.openmbean.InvalidKeyException;
-import java.util.Collection;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.util.*;
 
 @Service
 public class BookingService {
@@ -40,6 +40,8 @@ public class BookingService {
         bookingRepo.setTime(updatedBooking.getTime());
         bookingRepo.setMedicalOffice(updatedBooking.getMedicalOffice());
         bookingRepo.setReason(updatedBooking.getReason());
+        bookingRepo.setLastModifiedDate(new Date());
+        bookingRepo.setLastModifiedBy(updatedBooking.getLastModifiedBy());
         bookingRepository.save(bookingRepo);
         return bookingRepo;
     }
@@ -49,4 +51,8 @@ public class BookingService {
     }
 
     public void deleteAllBookings() { bookingRepository.deleteAll(); }
+
+    public void test() {
+        System.out.println();
+    }
 }
