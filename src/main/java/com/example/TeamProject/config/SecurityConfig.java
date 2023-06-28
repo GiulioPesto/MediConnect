@@ -29,7 +29,32 @@ public class SecurityConfig {
                 .password("{noop}password")
                 .roles("USER", "ADMIN")
                 .build();
-        return new InMemoryUserDetailsManager(user, admin);
+        UserDetails giulio = User.builder()
+                .username("giulio")
+                .password("{noop}password")
+                .roles("USER, ADMIN")
+                .build();
+        UserDetails riot = User.builder()
+                .username("riot")
+                .password("{noop}password")
+                .roles("USER, ADMIN")
+                .build();
+        UserDetails alberto = User.builder()
+                .username("alberto")
+                .password("{noop}password")
+                .roles("USER, ADMIN")
+                .build();
+        UserDetails shpend = User.builder()
+                .username("shpend")
+                .password("{noop}password")
+                .roles("USER, ADMIN")
+                .build();
+        UserDetails giada = User.builder()
+                .username("giada")
+                .password("{noop}password")
+                .roles("USER, ADMIN")
+                .build();
+        return new InMemoryUserDetailsManager(user, admin, giulio, riot, alberto, shpend, giada);
     }
 
     @Bean
@@ -37,7 +62,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(authorize -> {
                     try {
                         http.csrf().disable();
-                        authorize.requestMatchers("/api/meal/**").hasRole("ADMIN")
+                        authorize.requestMatchers("/api/*").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                                 .and().httpBasic();
                     } catch (Exception e) {
@@ -45,7 +70,6 @@ public class SecurityConfig {
                     }
                 }
         );
-
         return http.build();
     }
 }
